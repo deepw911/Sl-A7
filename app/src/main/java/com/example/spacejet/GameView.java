@@ -163,9 +163,10 @@ public class GameView extends SurfaceView implements Runnable {
                             for(int ii=0;ii<4;ii++){
                                 if(highScore[ii]<score){
 
-                                    final int finalI = ii;
-                                    highScore[ii] = score;
-                                    break;
+                                    final int finalI = i;
+                                    int temp = highScore[i];
+                                    highScore[i] = score;
+                                    score = temp;
                                 }
                             }
 
@@ -199,10 +200,12 @@ public class GameView extends SurfaceView implements Runnable {
                 if(highScore[i]<score){
 
                     final int finalI = i;
+                    int temp = highScore[i];
                     highScore[i] = score;
-                    break;
+                    score = temp;
                 }
             }
+
 
             //storing the scores through shared Preferences
             SharedPreferences.Editor e = sharedPreferences.edit();
